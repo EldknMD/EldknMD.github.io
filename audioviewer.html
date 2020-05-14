@@ -32,7 +32,7 @@
                 <div id="info">
                     Audio viewer online!
                 </div>
-                <label for="uploadedFile">Drag&drop or select a file to play:</label>
+                <label for="uploadedFile">Upload your song or drop it here!:</label>
                 <input type="file" id="uploadedFile"></input>
             </div>
             <div id="visualizer_wrapper">
@@ -149,7 +149,7 @@
                         };
                         that._updateInfo('Asking for help to patient with synesthesia...', true);
                         audioContext.decodeAudioData(fileResult, function(buffer) {
-                            that._updateInfo('Decode succussfully,start the visualizer', true);
+                            that._updateInfo('Decode succussfully, start the visualizer', true);
                             that._visualize(audioContext, buffer);
                         }, function(e) {
                             that._updateInfo("This audio file is too powerful, even more than Pasito perrón... It may be dangerous to your health. I can't do this", false);
