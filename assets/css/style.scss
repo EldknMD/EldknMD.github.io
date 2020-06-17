@@ -4,10 +4,10 @@
 @import 'jekyll-theme-hacker';
 table, th, td {
     border: 1px solid rgb(255, 255, 255);
-    border-color: white;
     border-collapse: collapse;
     text-align: center;
   }
 th, td {border: thick; border-color: white; background-color: black;
-
+th {border-color: white;}
+td {border-color: white;}
 };
