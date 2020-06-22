@@ -1,0 +1,229 @@
+---
+layout: default
+---
+
+h1 id="discord-js-chatbot-template">discord-js-chatbot-template</h1>
+<p><a href="/LICENSE"><img src="https://img.shields.io/apm/l/atomic-design-ui.svg?" alt="MIT License"></a>
+<a href="https://github.com/EldknMD/discord-js-chatbot-template/archive/master.zip"><img src="https://img.shields.io/github/downloads/atom/atom/total.svg?style=flat" alt="Github All Releases"></a> </p>
+<p><em>Disponible en inglés / avaliable in english <a href="/README.md">here.</a></em></p>
+<pre><code class="lang-utf-8">Soy hispano hablante, <span class="hljs-keyword">as</span>í <span class="hljs-keyword">que</span> <span class="hljs-keyword">no</span> es una traducció<span class="hljs-keyword">n</span> <span class="hljs-keyword">de</span> google.
+
+Un abrazo.
+</code></pre>
+<p>#
+Esta es una plantilla simple para un bot de chat de texto en Discord
+Usando esta plantilla, puedes montar tu propio bot de discord.</p>
+<h2 id="esta-gu-a-usar-lenguaje-simple-y-no-especializado-va-dirigida-a-usuarios-no-tan-experimentados-en-programaci-n-">Esta guía usará lenguaje simple y no especializado. Va dirigida a usuarios no tan experimentados en programación.</h2>
+<p>Todos los temas importantes, pero no obligatorios de usar, serán explicados en la <a href="https://github.com/EldknMD/discord-js-chatbot-template/wiki">wiki</a> en el futuro.</p>
+<p><em>Nota personal: Sugiero que la leas y entiendas lo que haces para mejorar tu código a futuro.</em></p>
+<p>Sigue este instructivo para una instalación rápida.</p>
+<h1 id="gu-a-de-inicio-r-pido">Guía de inicio rápido</h1>
+<p>Para empezar, necesitarás:</p>
+<ul>
+<li><p>[ ] Una <a href="https://discord.com/developers/applications">cuenta de desarrollador en Discord</a> <em>(Actualmente sólo disponible en inglés)</em>: Puedes usar tu cuenta &quot;normal&quot; de Discord para ingresar. Si no tienes cuenta, puedes <a href="https://discord.com/">crear una gratis</a>.</p>
+</li>
+<li><p>[ ] Una computadora con acceso estable a internet. <em>Nota: esta guía esta basada en Windows. No sabría decirte si el proceso es el mismo en otros sistemas operativos.</em></p>
+</li>
+<li><p>[ ] Entendimiento básico del idioma inglés (para entender las funciones de Javascript, que en su mayoría son palabras inglesas).</p>
+</li>
+<li><p>[ ] Un editor de texto instalado en tu dispositivo. Bloc de notas de Windows es suficiente, pero se hará más fácil si usas uno con marcado y que marque lineas y número de caracteres. <a href="https://atom.io/">Atom</a> es un editor ligero y bastante bueno para empezar. Yo, personalmente, uso <a href="https://code.visualstudio.com/">Visual Studio Code</a>. Ambos son gratuitos. Hay muchos además de esos, pero no deberías preocuparte tanto de esto al inicio.</p>
+</li>
+<li><p>[ ] Un programa para descomprimir archivos (cómo Winrar o Winzip)</p>
+</li>
+<li><p>[ ] <a href="https://nodejs.org/en/download/current/">Librería Node.js</a> <em>(sitio en inglés)</em> instalada en tu pc. Puedes ver que versión necesitas (de 32 o 64 bits) buscando <code>información del sistema</code> en el buscador de tu equipo. Captura del cuadro que aparece abajo. Una vez descargues la versión adecuada, instálala como cualquier programa con instalador.</p>
+</li>
+</ul>
+<p><img src="https://i.ibb.co/QQqr1TM/system-info-panel.png" alt="system information panel"></p>
+<h1 id="1er-paso-registra-tu-bot-en-tu-cuenta-de-desarrollador-de-discord">1er paso: Registra tu bot en tu cuenta de desarrollador de Discord</h1>
+<p>Paso previo importante. Debes acceder al portal de desarrollador de Discord e ingresar con tu cuenta.</p>
+<p>Esta es la vista que tendrás cuando lo hagas:</p>
+<p><img src="https://i.ibb.co/2ScsQND/discorddev.png" alt="devportalmainview"></p>
+<p>El siguiente paso es clickear el botón azul a un costado de tu foto de perfil: <code>New Application</code>.</p>
+<p>Este cuadro se abrirá, preguntando por el nombre de tu nueva app. Este no es el nombre que tendrá tu bot, es el que tendrá en tu lista de aplicaciones. <em>Siempre usa nombres cortos y explicativos para optimizar tu trabajo*</em>.</p>
+<p><img src="https://i.ibb.co/KWzsGHb/new-app.png" alt="newapp"></p>
+<p>Puedes poner una imágen a tu app, para hacerla más reconocible (tampoco repercutirá en la foto de perfil de tu futuro bot) y una descripción de la misma. <strong>Ninguna de estas es obligatoria</strong>.
+Los signos de interrogación cubren el ID del cliente de mi app. Este es un número largo, que necesitarás luego para añadir el bot a tu servidor.
+Para proceder a creat el usuario &quot;bot&quot; propiamente tal, clickea en la pestaña <code>Bot</code> que se encuentra al lado izquierdo de tu pantalla.</p>
+<p><img src="https://i.ibb.co/NV5y7KS/client-main-view.png" alt="clientID"></p>
+<p>Aquí verás un botón azul que dice <code>Add bot</code>. Personalmente, te recomiendo echar un vistazo a la documentación de los usuarios bot en el enlace <code>Learn more about bot users</code>.</p>
+<p><img src="https://i.ibb.co/dGFDN6r/bot-page.png" alt="bottab"></p>
+<p>Cuando hagas click, aparecerá otro recuadro advirtiendo que <strong>los usuarios bot no pueden ser destruidos</strong> en el API de discord. Confirma y continúa.</p>
+<p>Ahora tu usuario bot está listo. Puedes agregar una foto de perfil para tu bot, cambiar su nombre y ver su token (&quot;credencial&quot;). Este token el como una &quot;llave&quot; que usará tu código para entrar en el usuario bot que acabas de crear. </p>
+<hr>
+
+<pre><code class="lang-utf-8">Es extremadamente importante <span class="hljs-keyword">que</span> mantengas este <span class="hljs-keyword">n</span>úmero <span class="hljs-keyword">en</span> secreto. Cualquiera <span class="hljs-keyword">que</span> tenga acceso a é<span class="hljs-keyword">l</span>, puede usar <span class="hljs-keyword">la</span> identidad del usuario bot <span class="hljs-keyword">que</span> creaste y poner <span class="hljs-keyword">su</span> propio código <span class="hljs-keyword">en</span> el.
+</code></pre>
+<hr>
+
+<p>Serás responsable de todo lo que se haga con tu usuario bot.</p>
+<p><img src="https://i.ibb.co/sWFcVQS/bot-mainpage.png" alt="newbot"></p>
+<p>Copia el token usando el botón azul <code>Copy</code> y ponla en un lugar seguro. **Si sospechas que alguien podría estar usando tu token, regenéralo inmediatamente con el botón <code>Regenerate</code>. Esto inutilizará el token anterior y te proveerá de uno nuevo.</p>
+<hr>
+
+<p><em>Opcional</em>: Yo siempre apago la opción <code>Public bot</code>. Principalmente porque nunca he hecho un bot diseñado para uso masivo. Al desactivar esta opción, sólo tu podrás añadir el usuario bot a un servidor. Ciertas funciones pueden fallar si funcionan en más de un servidor sin estar diseñadas para ello.</p>
+<p><img src="https://i.ibb.co/vw1PYkf/public-bot.png" alt="publicbot"></p>
+<hr>
+
+<p><strong>Importante</strong>: Ahora necesitamos el <code>permission integer</code>. En programación, <code>integer</code> hace referencia a un valor numérico. En este sentido, 5 no es lo mismo que &quot;5&quot; o &quot;cinco&quot;.</p>
+<p>Este número contiene en la información de los permisos de servidor que solicita el bot para funcionar. Mientras seleccionas los permisos, el número de abajo irá cambiando. Los permisos que marqué deberían ser suficientes para un chatbot basado principalmente en texto. Puedes cambiar los permisos después dentro de tu server, así que no te preocupes si quieres agregar más funciones después.</p>
+<p>Pon los permisos que quieras (o sólo copia los míos) y luego guarda el número que aparece abajo.</p>
+<p><img src="https://i.ibb.co/HVr8p5x/permissionsdone.png" alt="permissions"></p>
+<p>Acabas de terminar este paso. Guarda la información que obtuviste en este paso en un lugar seguro y pasa a la siguiente parte.</p>
+<h1 id="2do-paso-a-adir-tu-bot-a-tu-servidor">2do paso: Añadir tu bot a tu servidor</h1>
+<pre><code class="lang-utf-8">Oye! Vas bien... excelente, si <span class="hljs-keyword">me</span> preguntas.
+</code></pre>
+<p>Ahora, te recomiento encarecidamente que pruebes y desarrolles tu bot en un &quot;test field&quot; o campo de pruebas, un servidor dque sólo tenga ese propósito: un servidor donde estés sólo tu y unos pocos colaboradores de confianza, si así lo quieres.</p>
+<p> Programar puede ser un constante ensayo y error a veces. Añadir nuevas funciones o características puede ser un proceso con tendencia a bugs y glithes. Así que, para reducir riesgo  debes tomar este tipo de medidas.</p>
+<pre><code class="lang-utf-8">Cosas <span class="hljs-keyword">que</span> me han pasado a mi:
+&gt;Spam <span class="hljs-keyword">de</span> mensajes
+&gt;Respuestas <span class="hljs-keyword">de</span> texto corruptas <span class="hljs-keyword">e</span> inacabables debido a un bucle...
+&gt;Eliminació<span class="hljs-keyword">n</span> <span class="hljs-keyword">de</span> canales
+Entre otros...
+</code></pre>
+<p>  Si no estás seguro de querer usar un servidor existente para pruebas, siempre puedes crear uno nuevo.</p>
+<hr>
+
+<pre><code class="lang-utf-8"><span class="hljs-attribute">Alguien</span> que nunca haya cometido un <span class="hljs-literal">error</span>, jamás ha intentando algo nuevo...
+Albert Einstein
+</code></pre>
+<hr>
+
+<p>Necesitarás esto ahora:</p>
+<pre><code>htt<span class="hljs-symbol">ps:</span>//discordapp.com/oauth2/authorize?&amp;client_id=(AQUÍ VA TU ID DE CLIENTE <span class="hljs-built_in">SIN</span> LOS PARÉNTESIS)&amp;permissions=(AQUÍ VA EL <span class="hljs-built_in">N</span>ÚMERO DE LOS PERMISOS <span class="hljs-built_in">SIN</span> LOS PARÉNTESIS)&amp;scope=bot`
+</code></pre><p>Debes reemplazar el ID del cliente y el número de los permisos en su respectivo lugar.</p>
+<blockquote>
+<p><em>(Hay una copia de este enlace en <a href="/config.JSON">config.json</a>, en la etiqueta dbotAuth 😉)</em></p>
+</blockquote>
+<p>Una vez reemplaces los valore, ingresa el enlace en tu navegador.</p>
+<p>La pantalla de invitación será como esta. El recuadro gris abre una lista de todos los servidores donde estás autorizado a agregar usuarios bot (es necesario el permiso <em>Manage server/Administrar servidor</em> o admin). Cuando hayas seleccionado el server deseado, procede a clickear la caja azul de <code>continuar</code>. Seguido aparecerá una lista de los permisos que el bot te solicita (o sea, los que seleccionaste antes en el <code>persmission integer</code>). Autoriza estos permisos y llena el captcha siguiente. Este no debería ser un problema <a href="https://pastebin.com/raw/1FjDcSkW">a menos que no seas humano... en ese caso, me temo que no puedo ayudarte.</a></p>
+<p><img src="https://i.ibb.co/09m3q8p/invitation.png" alt="invitation"></p>
+<p><em>¡Tadaa!</em> Tu usuario bot es ahora un miembro oficial de tu servidor. Debería aparecer en la columna derecha como un usuario desconectado (con la linda etiqueta <code>BOT</code> sobre si). Está desconectado porque es un usuario bot &quot;vacío&quot;. La buena noticia es que ahora si estamos listos para programarlo. En este caso, Github Example es nuestro nuevo bot.</p>
+<p><img src="https://i.ibb.co/pfHYdT7/discord-open.png" alt="discord server"></p>
+<h1 id="3er-paso-clona-este-repositorio-en-tu-equipo-y-ubica-tus-variables">3er paso: Clona este repositorio en tu equipo y ubica tus variables</h1>
+<p>Tienes dos opciones para eso:</p>
+<ul>
+<li><em>Opción 1</em>: Descarga este repositorio directamente desde GitHub. Para esto, clickea sobre el botón <code>clone or download</code>, después descargar como zip (O con el cliente Git, si lo tienes instalado en sistema). Ese mismo enlace está aquí:</li>
+</ul>
+<p><a href="https://github.com/EldknMD/discord-js-chatbot-template/archive/master.zip"><img src="https://img.shields.io/github/downloads/atom/atom/total.svg?style=flat" alt="Github All Releases"></a> </p>
+<p>Te recomiendo esta opción si no se te hace familiar la siguiente.</p>
+<ul>
+<li><em>Opción 2</em>: Usa el comando <code>git clone</code> en tu consola de comandos para clonar este repositorio en tu sistema.</li>
+</ul>
+<p>Una vez obtengas el archivo .zip, debes extraerlo. Si lo deseas puedes cambiar el nombre de la carpeta que extraigas.</p>
+<p>Ahora abre el directorio principal (dentro de la carpeta que acabas de descomprimir). Debería verse algo así:</p>
+<ul>
+<li>commands<ul>
+<li>embed.js</li>
+<li>hello.js</li>
+</ul>
+</li>
+<li>.gitignore</li>
+<li>bot.js</li>
+<li>config.json</li>
+<li>LICENSE</li>
+<li>package-lock.json</li>
+<li>package.json</li>
+<li>README.md</li>
+<li>READMESPA.md</li>
+</ul>
+<h4 id="reemplaza-las-variables-predeterminadas-con-las-de-tu-usuario-bot">Reemplaza las variables predeterminadas con las de tu usuario bot</h4>
+<p>Para poner a funcionar tu bot, sólo debes reemplazar el token en <code>config.json</code>, pero quizá quieres sabes que cosas son personalizables en el código que descargaste:</p>
+<ol>
+<li><p>En <code>config.json</code>:</p>
+<p>-<em>Opcional</em> <strong>El prefijo de tu bot</strong>: Un prefijo es como una advertencia para que el bot comience a buscar una instrucción. Es cómo decir &quot;Escucha el siguiente mensaje&quot;. Puse como prefijo default <code>&gt;</code>. Puedes cambiarlo a lo que tú quieras, incluso palabras o números. En mi opinión, mientras más simple, mejor: un sólo carácter, fácil de memorizar y teclear, pero no lo suficientemente fácil de teclear como para ponerlo accidentalmente (<code>.</code> y <code>,</code> son malas opciones por su posición en un teclado QWERTY y su uso común en el español y lenguas romances en general, además de en el inglés).</p>
+<p>-<strong>El token de tu usuario bot</strong>: reemplaza el valor predeterminado con el token de tu usuario bot, que obtuviste en el primer paso. Esto es de suma importancia para que tu programa conecte con el usuario que pusiste en tu servidor.</p>
+<p>-<em>Opcional</em> <strong>Tu ID de usuario de Discord</strong>: Para obtener códigos de error más fácilmente, pon tu ID de usuario (humano) para que los errores que se generen se envíen como mensaje directo a ti. Puedes obtener este ID colocando a Discord en modo desarrollador (configuración &gt; avanzada), haciendo click en ti y luego seleccionando <code>copiar ID</code>.</p>
+<ul>
+<li><em>Opcional</em> <strong>Completa el enlace de invitación</strong>: Incluso si planeas colocar al bot en un servidor y jamás moverlo, siempre es una buena idea tener una copia del link de invitación, en caso que expulses a tu bot del servidor o cualquier problema derivado.</li>
+</ul>
+</li>
+<li><p>En <code>bot.js</code>:</p>
+<ul>
+<li><p><em>Opcional</em> <strong>Línea 14</strong>: Aquí está la linea que dirá tu bot cuando alguien le envíe un mensaje directo a su perfil. Usualmente es algo como &quot;No puedo oir ni obedecer mensajes directos, así que no los envíes&quot;, cómo el mensaje que escribí yo, pero puedes ponerle lo que quieras.</p>
+</li>
+<li><p><strong>Línea 18</strong>: Aquí se determina el canal &quot;de bienvenida&quot;. Coloca el ID del canal que desees dentro del servidor donde está el bot. Una vez más, este ID lo puedes obtener haciendo click derecho sobre el canal deseado y después <code>copiar ID</code>. Pon este número entre las cremillas donde está la letra X.</p>
+</li>
+<li><p><em>Opcional</em> <strong>Líneas 19 a 25</strong>: Personaliza el mensaje <code>embed</code> (en español significa &quot;empotrado&quot;, pero no se explica bien) que recibe a los nuevos miembros del servidor. Un mensaje <code>embed</code> en Discord.js es un mensaje compuesto, que posee título, descipción, imágenes, thumnbnail, enlaces, etc. Hay comentarios <em>(En inglés)</em> en el código que explican la función de cada una de las partes. Planeo agregar la explicación en español en la <a href="https://github.com/EldknMD/discord-js-chatbot-template/wiki">wiki</a>, pero en internet está lleno de ejemplos.</p>
+</li>
+<li><p><em>Opcional</em> <strong>Líneas 39 a 52</strong>: Hay tres reacciones (emojis) accionadas por triggers (palabras especiales) predeterminadas. Los trigger son: <code>hello</code>, <code>good bye</code> y <a href="https://www.youtube.com/watch?v=GO5FwsblpT8"><code>on a mote of dust, suspended in a sunbeam</code></a>. Las reacciones son emojis <a href="https://unicode.org/emoji/charts/full-emoji-list.html">unicode</a> <em>(Página en inglés, aunque es autoexplicativa)</em>. Estas reacciones están ubicadas una linea abajo de la expresión <code>message.content</code>. Sólo se puede usar emojis unicode por la forma en la que está programado ahora. Haré una página de la <a href="https://github.com/EldknMD/discord-js-chatbot-template/wiki">wiki</a> dedicada a reacciones en el futuro.</p>
+</li>
+<li><p><em>Opcional pero mi favorita</em> <strong>Líneas a 54 a 59 y línea 65</strong>: <code>const botStateArray</code> contiene &quot;actividades&quot; para tu bot. Aparecen en Discord como &quot;Jugando a (texto aquí)&quot; (al igual que cuando un humano usa un juego o escucha música con Discord abierto). Edita el texto entre las comillas aéreas y este será mostrado como uno de los estados del usuario bot. Puedes añadir más estados o quitar algunos de los que ya están, preocupándote de queden separados por comas entre sí. Si quitas la constante completa (de ahí <code>const</code>), las actividades (&quot;estados&quot; o como quieras llamarles) desaparecerán y el bot no mostrará nada bajo su nombre.
+En la línea 65 está el cooldown, es decir, el tiempo entre cada cambio de estado, en milisegundos <del>1000 milisegundos = 1 segundo</del>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>Eso es todo lo que podrías &quot;personalizar&quot;.
+Ahora, debo confesar que te he mentido un poco acerca del código. Verás...</p>
+<h2 id="-todo-es-personalizable-">¡Todo es personalizable!</h2>
+<p>No literalmente, pero en su justa medida es como pintar o escribir:</p>
+<blockquote>
+<p><code>No hay sólo una forma de hacer funcionar las cosas</code></p>
+</blockquote>
+<p>Este programa usa sólo una librería, <a href="https://discord.js.org/#/">Discord.js</a>, que permite la interacción con el API de Discord usando mi lenguaje de programación favorito <code>Javascript</code>, proveyendo también varias funciones prediseñadas, que hacen más fácil el codificar lo que quieres. No estoy ni cerca de usar todas las funcionalidades de esta librería más las de Javascript vanilla.</p>
+<p>La mejor forma de aprender este tipo de cosas <del>así como muchas otras cosas en la vida</del> es intentarlo, fallar, intentar otra vez, volver a fallar y repetir. Intentaré poner más ejemplos de comandos y posibles usos en este repositorio. Una vez más, internet tiene montones de ellos, en caso que quieras buscarlo por tu cuenta. Te insto a que lo intentes, falles y aprendas algo nuevo. Si por cualquier eventualidad, tienes algún problema con esto, trataré de ayudarte, ya sea aquí en GitHub o en mi Discord <code>EldknMD#4471</code>, tan pronto sea posible.</p>
+<p>Y ahora...</p>
+<h1 id="4to-paso-y-final-instala-las-dependencias-del-bot-y-run-">4to paso y final: Instala las dependencias del bot y... <code>RUN</code></h1>
+<p>(Música electrónica alocada)</p>
+<p>Felicitaciones por llegar hasta aquí. Casi estás listo.</p>
+<p>Tienes todo lo necesario ya.</p>
+<ol>
+<li><p>Abre el directorio principal de tu bot (donde está <code>bot.js</code>).</p>
+<p><img src="https://i.ibb.co/d5ZpfjZ/before-install.png" alt="main directory"></p>
+</li>
+<li><p>Haz click derecho en el fondo de la carpeta (sin selecccionar ningún archivo) mientras mantienes presionada la tecla control y shift. Esto añadirá la opción <code>Abrir la ventana de PowerShell aquí</code> al menú contextual. Selecciona esta opción.</p>
+</li>
+<li><p>Aparecerá una pantalla azul grande. Tranquilo, este &quot;pantallazo azul&quot; es lo que buscabamos.</p>
+<p><a href="https://i.ibb.co/02D588Q/powershell.png">powershell</a></p>
+<p>Cómo podrás notar, la consola que abriste está funcionando en la carpeta de tu bot.</p>
+<p>Cómo tienes instalado <a href="https://nodejs.org/en/download/current/">Node.js</a> en tu equipo, el siguiente paso es ejecutar lo siguiente.</p>
+<pre><code class="lang-node">npm <span class="hljs-keyword">install</span>
+</code></pre>
+<p><del>presiona la tecla enter para ejecutar</del></p>
+<p>Sólo por si no sabías antes, <code>npm</code> significa <strong>N</strong>ode <strong>P</strong>ackage <strong>M</strong>anager, o sea, Administrador de paquetes de Node. Está incluido dentro de Node y te ayudará a instalar código de terceros en tus proyectos, añadiendo más funciones prediseñadas y simplificando asi aún más el programar.</p>
+<p>Enviando ese comando al PowerShell, le ordenas a la consola buscar <code>npm</code> y, al encontrarlo, ejecutar <code>install</code>. La función <code>install</code> de npm instala todas las depencencias (software de terceros) y subdependencias que estén especificadas en los archivos <code>package.json</code> y <code>package-lock.json</code>, respectivamente.</p>
+<p>Normalmente, estos archivos tienes que hacerlos tú, mediante el comando <code>npm init</code>, pero te tengo cubierto esta vez.</p>
+</li>
+<li><p><strong>Es hora...</strong>: Run...</p>
+</li>
+</ol>
+<p><del>Prometo que es la última vez que hago ese mal chiste</del></p>
+<pre><code class="lang-node"><span class="hljs-keyword">node</span> <span class="hljs-title">.</span>
+</code></pre>
+<p><code>node bot.js</code> funcionaría también, pero </p>
+<pre><code class="lang-utf-8">. = <span class="hljs-keyword">el</span> archivo principal <span class="hljs-keyword">en</span> <span class="hljs-keyword">el</span> directorio
+</code></pre>
+<p> Este ya está definido en <code>package.json</code> por tu héroe anónimo.</p>
+<p>Deberías ver esto en PowerShell:</p>
+<p><img src="https://i.ibb.co/HFzPKvy/It-s-alive.png" alt="alive"></p>
+<p>Arriba vemos los <code>console.log()</code> de las primeras lineas de <code>bot.js</code>. La aparición de las siete líneas suele indicar que todo salió bien.</p>
+<p>¡Sorpresa! Nuestro nuevo &quot;amigo&quot; está conectado <del>A diferencia de mi, prefiero que no me molesten</del>.</p>
+<p><img src="https://i.ibb.co/6JsXNSy/online-bot.png" alt="botonline"></p>
+<p>Para asegurarnos, veamos las funciones en acción:</p>
+<ul>
+<li><p>[x] Cambia su actividad cada 10 segundos</p>
+</li>
+<li><p>[x] Reacciona a ciertas palabras</p>
+<p>  <img src="https://i.ibb.co/vPCdv4w/reacts.png" alt="reactions"></p>
+</li>
+<li><p>[x] Responde a los comandos: dos al momento de escribir esto. Mi prejifo es <code>-</code>.</p>
+<p>  <img src="https://i.ibb.co/X5XnVBd/comamnds.png" alt="commands"></p>
+</li>
+<li><p>[x] Alegremente da la bienvenidas a los miembros nuevos. También da la bienvenida en la consola de comandos <del>pero no es tan bonito</del>.</p>
+<p>  <img src="https://i.ibb.co/Tr33X03/welcome.png" alt="welcome"></p>
+</li>
+</ul>
+<h1 id="eso-es-todo-camarada">Eso es todo, camarada</h1>
+<p>Tu bot ahora funcionará hasta el fin de los tiempos...</p>
+<p> ...A menos que cierres PowerShell o apagues tu PC.</p>
+<p>  Sin embargo, ya pasaste la parte más &quot;compleja&quot;.</p>
+<pre><code class="lang-utf-8">  Quien lo <span class="hljs-keyword">dir</span>ía, parece <span class="hljs-keyword">que</span> tienes talento <span class="hljs-keyword">en</span> esto...
+</code></pre>
+<p>El siguiente paso solucionará esto. Proximamente: el hosting de tu bot <del>especialmente aquel que es gratis para ti</del>.</p>
+<p>Estoy casi seguro que entendiste casi todo lo que expuse en este pequeño tutorial. </p>
+<pre><code><span class="hljs-function"><span class="hljs-title">Tienes</span></span> cara de ser un humano bastante inteligente...
+</code></pre><p>No dudes en contactarme aquí o a mi usuario <code>humano</code> en Discord <strong>EldknMD#4471</strong>.</p>
+<p>Hice esta guía pensando en lo que a mi me habría gustado encontrar cuando empecé a programar hace un tiempo atrás. </p>
+<p>Mi primeros programas fueron bots de chat de Discord, así que es como mi habilidad &quot;Main&quot;. Aunque me queda mucho por aprender, de cualquier forma.</p>
+<p>Intentaré darme el tiempo de añadir más contenido a este repositorio en el futuro.</p>
+<p>¡Feliz programación! 🤓</p>
