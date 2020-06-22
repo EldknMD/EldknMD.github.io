@@ -1,6 +1,3 @@
----
-layout: default
----
 
 # discord-js-chatbot-template
 
