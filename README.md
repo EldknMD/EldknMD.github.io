@@ -4,4 +4,4 @@
 
 # EldknMD.github.io
 
-Hey, what's up? If you're reading this, you know what you're doing ;) Enjoy!
+Pitch black screen in front of you
